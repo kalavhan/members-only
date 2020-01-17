@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
-  before_action :check_signed_in, only: [:new, :create]
+  before_action :check_signed_in, only: %i[new create]
 
   def new
     @post = Post.new
@@ -7,7 +9,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user_id  = current_user.id
+    @post.user_id = current_user.id
 
     if @post.save
       redirect_to root_path
