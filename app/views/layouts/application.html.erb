@@ -10,10 +10,13 @@
   </head>
 
   <body>
+    <%= link_to "All posts", posts_path %>
     <% if logged_in? %>
       <%= link_to "Log out", logout_path, method: :delete %>
+      <%= link_to "Create post", new_post_path %>
     <% else %>
       <%= link_to "Log in", login_path %>
+      <%= link_to "Sign up", signup_path %>
     <% end %>
     <%= yield %>
   </body>
