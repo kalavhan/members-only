@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal: true 
 
 class User < ApplicationRecord
   has_many :posts
@@ -17,18 +17,18 @@ class User < ApplicationRecord
     update_attribute(:remember_token, User.digest(token))
   end
 
-  private
-
-  def downcase_email
-    email.downcase!
-  end
-
   def self.new_token
     SecureRandom.urlsafe_base64
   end
 
   def self.digest(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  private
+
+  def downcase_email
+    email.downcase!
   end
 
   def generate_token
