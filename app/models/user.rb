@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :posts
   before_create :generate_token
   before_save :downcase_email
   validates :name, presence: true, length: { minimum: 3 }
